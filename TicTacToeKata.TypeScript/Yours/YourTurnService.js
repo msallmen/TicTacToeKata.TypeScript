@@ -6,7 +6,13 @@ var YourTurnService = (function () {
     function YourTurnService() {
     }
     YourTurnService.prototype.tryTakeTurn = function (game, attempt) {
-        throw 'Not Implemented';
+        if (game.board[attempt.x][attempt.y] == Marker.Empty) {
+            game.board[attempt.x][attempt.y] = game.whosTurnIsIt;
+            game.currentTurn++;
+            game.whosTurnIsIt = game.whosTurnIsIt == Marker.X ? Marker.O : Marker.X;
+            return TurnResult.Valid;
+        }
+        return TurnResult.Invalid;
     };
     return YourTurnService;
 })();

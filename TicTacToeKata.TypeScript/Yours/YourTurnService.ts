@@ -5,7 +5,14 @@
 
 class YourTurnService implements ITurnService {
 	tryTakeTurn(game: Game, attempt: TurnAttempt): TurnResult {
-		//todo: #implementThis
-		throw 'Not Implemented';
-	}
+        if (game.board[attempt.x][attempt.y] == Marker.Empty) {
+            game.board[attempt.x][attempt.y] = game.whosTurnIsIt;
+            game.currentTurn++;
+            game.whosTurnIsIt = game.whosTurnIsIt == Marker.X
+                ? Marker.O
+                : Marker.X;
+            return TurnResult.Valid;
+        }
+        return TurnResult.Invalid;
+    }
 }

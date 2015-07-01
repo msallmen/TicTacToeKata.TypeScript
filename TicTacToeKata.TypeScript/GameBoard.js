@@ -1,12 +1,12 @@
 var Game = (function () {
     function Game() {
         this.board = [
-            [0 /* Empty */, 0 /* Empty */, 0 /* Empty */],
-            [0 /* Empty */, 0 /* Empty */, 0 /* Empty */],
-            [0 /* Empty */, 0 /* Empty */, 0 /* Empty */]
+            [Marker.Empty, Marker.Empty, Marker.Empty],
+            [Marker.Empty, Marker.Empty, Marker.Empty],
+            [Marker.Empty, Marker.Empty, Marker.Empty]
         ];
         this.currentTurn = 1;
-        this.whoGoesFirst = Date.now() % 2 == 0 ? 1 /* X */ : 2 /* O */;
+        this.whoGoesFirst = Marker.X; //X *always* goes first!
         this.whosTurnIsIt = this.whoGoesFirst;
     }
     return Game;
